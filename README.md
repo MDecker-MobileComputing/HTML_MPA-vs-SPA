@@ -1,11 +1,11 @@
-# MPA vs SPA #
+# Website: MPA vs SPA #
 
 <br>
 
 This repository contains two implementations of the same simple web site:
 
-* Multi  Page App (MPA, traditional approach), see [here](docs/MPA/index.html)
-* Single Page App (SPA, modern approach)     , see [here](docs/SPA/index.html)
+* Multi  Page App (MPA, traditional approach), see [here](https://mdecker-mobilecomputing.github.io/HTML_MPA-vs-SPA/MPA/index.html).
+* Single Page App (SPA, modern approach)     , see [here](https://mdecker-mobilecomputing.github.io/HTML_MPA-vs-SPA/SPA/index.html).
 
 <br>
 
