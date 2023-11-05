@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+    <head>
+        <meta charset="utf-8" >
+        <title>MPA vs SPA</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" type="text/css" href="../style.css">
+        <style>
+
+            .versteckt {
+                display: none;
+            }
+
+        </style>        
+        <script src="router.js"></script> <!-- Router-Klasse laden -->
+        
+        <script><!-- Single Page Router initialisieren -->
+
+            window.addEventListener("load", () => {
+
+                /**
+                 * Hilfsfunktion zum Umschalten des sichtbaren Inhalts.
+                 *
+                 * @param {String} id    HTML-ID des anzuzeigenden <main>-Elements
+                 * @param {String} titel Neuer Titel für den Browser-Tab
+                 */
+                const seiteTauschen = (id, titel) => {
+
+                    // alle Seiten auf "unsichtbar" schalten
+                    document.querySelectorAll("main").forEach(mainElement => {
+
+                        mainElement.classList.add("versteckt");
+                    })
+
+                    // ausgewählte Seite 
+                    let element = document.querySelector(`#${id}`);
+                    if (element) {
+
+                        element.classList.remove("versteckt");
+                    }
+
+                    document.title = titel;
+                }
+
+                /**
+                 * Konfiguration des URL-Routers
+                 */
+                let routes = [
+                    {
+                        url: "^/$",
+                        show: () => seiteTauschen("seite-haupt", "SPA: Hauptseite"),
+                    },{
+                        url: "^/seite2/$",
+                        show: () => seiteTauschen("seite-2", "SPA: Seite 2"),
+                    },{
+                        url: "^/seite3/$",
+                        show: () => seiteTauschen("seite-3", "SPA: Seite 3"),
+                    },{
+                        url: ".*",
+                        show: () => seiteTauschen("seite-nicht-gefunden", "SPA: Seite nicht gefunden"),
+                    }
+                ];
+
+                const router = new Router(routes);
+                router.start();
+            });
+        </script>        
+    </head>
+    <body>
+
+        <main id="seite-haupt" class="versteckt">
+
+            <h1>Hauptseite</h1>
+
+            <p>Dies ist die Hauptseite der Website.</p>
+    
+            <br>
+    
+            <a href="#/seite2/">Seite 2</a>
+            <a href="#/seite3/">Seite 3</a>
+            <!-- <a href="#/nichtda/">Link zu nicht vorhandener Seite</a> -->
+
+        </main>
+
+
+        <main id="seite-2" class="versteckt">
+
+            <h1>Seite 2</h1>
+
+            <p>Diese ist die zweite Seite der Website.</p>
+    
+            <a href="#/">Zurück zur Hauptseite</a>
+
+        </main>
+
+
+        <main id="seite-3" class="versteckt">
+
+            <h1>Seite 3</h1>
+
+            <p>Diese ist die dritte Seite der Website.</p>
+    
+            <a href="#/">Zurück zur Hauptseite</a>
+
+        </main>
+
+
+        <main id="seite-nicht-gefunden" class="versteckt">
+
+            <h1>Seite nicht gefunden</h1>
+
+            <p>Diese ist die dritte Seite der Website.</p>
+    
+            <a href="#/">Zurück zur Hauptseite</a>
+
+        </main>        
+
+    </body>
+</html>
