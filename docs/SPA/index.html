@@ -27,7 +27,7 @@
                 const seiteTauschen = (id, titel) => {
 
                     // alle Seiten auf "unsichtbar" schalten
-                    document.querySelectorAll("main").forEach(mainElement => {
+                    document.querySelectorAll("div").forEach(mainElement => {
 
                         mainElement.classList.add("versteckt");
                     })
@@ -68,7 +68,7 @@
     </head>
     <body>
 
-        <main id="seite-haupt" class="versteckt">
+        <div id="seite-haupt" class="versteckt">
 
             <h1>Hauptseite</h1>
 
@@ -80,10 +80,10 @@
             <a href="#/seite3/">Seite 3</a>
             <!-- <a href="#/nichtda/">Link zu nicht vorhandener Seite</a> -->
 
-        </main>
+        </div>
 
 
-        <main id="seite-2" class="versteckt">
+        <div id="seite-2" class="versteckt">
 
             <h1>Seite 2</h1>
 
@@ -91,10 +91,10 @@
     
             <a href="#/">Zurück zur Hauptseite</a>
 
-        </main>
+        </div>
 
 
-        <main id="seite-3" class="versteckt">
+        <div id="seite-3" class="versteckt">
 
             <h1>Seite 3</h1>
 
@@ -102,10 +102,10 @@
     
             <a href="#/">Zurück zur Hauptseite</a>
 
-        </main>
+        </div>
 
 
-        <main id="seite-nicht-gefunden" class="versteckt">
+        <div id="seite-nicht-gefunden" class="versteckt">
 
             <h1>Seite nicht gefunden</h1>
 
@@ -113,7 +113,7 @@
     
             <a href="#/">Zurück zur Hauptseite</a>
 
-        </main>        
+        </div>        
 
     </body>
 </html>
