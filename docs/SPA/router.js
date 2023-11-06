@@ -2,6 +2,7 @@
 
 // Quelle dieser Datei:
 // https://github.com/DennisSchulmeister/dhbwka-wwi-webprog-quellcodes/blob/5accf90fb94319568a85d764fe94327a4bec599c/3%20JavaScript/Aufgaben/SPA-Router/Aufgabe/router.js
+// Shortlink: https://bit.ly/simple-spa-router
 
 /**
  * Diese Klasse stellt einen so genannten Single Page Router dar. Sie überwacht
