@@ -9,9 +9,9 @@
 
             .versteckt { display: none; }
 
-        </style>        
+        </style>
         <script src="router.js"></script> <!-- Router-Klasse laden -->
-        
+
         <script><!-- SPA-Router initialisieren -->
 
             window.addEventListener("load", () => {
@@ -30,7 +30,7 @@
                         mainElement.classList.add("versteckt");
                     })
 
-                    // ausgewählte Seite 
+                    // ausgewählte Seite
                     let element = document.querySelector(`#${id}`);
                     if (element) {
 
@@ -38,7 +38,7 @@
                     }
 
                     document.title = titel;
-                }
+                };
 
                 /**
                  * Konfiguration des URL-Routers
@@ -62,7 +62,7 @@
                 const router = new Router(routes);
                 router.start();
             });
-        </script>        
+        </script>
     </head>
     <body>
 
@@ -71,9 +71,9 @@
             <h1>Hauptseite</h1>
 
             <p>Dies ist die Hauptseite der Website.</p>
-    
+
             <br>
-    
+
             <a href="#/seite2/">Seite 2</a>
             <a href="#/seite3/">Seite 3</a>
             <a href="#/nichtda/">Link zu nicht vorhandener Seite</a>
@@ -86,7 +86,7 @@
             <h1>Seite 2</h1>
 
             <p>Diese ist die zweite Seite der Website.</p>
-    
+
             <a href="#/">Zurück zur Hauptseite</a>
 
         </div>
@@ -97,7 +97,7 @@
             <h1>Seite 3</h1>
 
             <p>Diese ist die dritte Seite der Website.</p>
-    
+
             <a href="#/">Zurück zur Hauptseite</a>
 
         </div>
@@ -106,10 +106,10 @@
         <div id="seite-nicht-gefunden" class="versteckt">
 
             <h1>FEHLER: Seite nicht gefunden</h1>
-    
+
             <a href="#/">Zurück zur Hauptseite</a>
 
-        </div>        
+        </div>
 
     </body>
 </html>
