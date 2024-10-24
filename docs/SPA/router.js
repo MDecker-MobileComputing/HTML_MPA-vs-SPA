@@ -15,8 +15,9 @@
  * URL sowie eine Funktion zur Anzeige des dazugehörigen Inhalts besitzen.
  */
 class Router {
+
     /**
-     * Konstruktor. Im Parameter routes muss eine Liste mit den vorhandenen
+     * Konstruktor. Im Parameter "routes" muss eine Liste mit den vorhandenen
      * URL-Routen der App übergeben werden. Die Liste muss folgendes Format
      * haben:
      *
@@ -34,27 +35,33 @@ class Router {
      * @param {List} routes Definition der in der App verfügbaren Seiten
      */
     constructor(routes) {
+
         this._routes = routes;
         this._started = false;
 
         window.addEventListener("hashchange", () => this._handleRouting());
     }
 
+
     /**
      * Routing starten und erste Route direkt aufrufen.
      */
     start() {
+
         this._started = true;
         this._handleRouting();
     }
+
 
     /**
      * Routing stoppen, so dass der Router nicht mehr aktiv wird, wenn Link
      * angeklickt wird oder sich die URL der Seite sonst irgendwie ändert.
      */
     stop() {
+
         this._started = false;
     }
+
 
     /**
      * Diese Methode wertet die aktuelle URL aus und sorgt dafür, dass der
@@ -83,9 +90,11 @@ class Router {
      * nicht direkt angesprochen wurde. Diesen Aufwand sparen wir uns hier. :-)
      */
     _handleRouting() {
+
         let url = location.hash.slice(1);
 
         if (url.length === 0) {
+
             url = "/";
         }
 
@@ -93,10 +102,12 @@ class Router {
         let route = this._routes.find(p => matches = url.match(p.url));
 
         if (!route) {
+
             console.error(`Keine Route zur URL ${url} gefunden!`);
             return;
         }
 
         route.show(matches);
     }
+
 }
