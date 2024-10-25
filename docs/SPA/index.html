@@ -6,9 +6,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="../style.css">
         <style>
+            .versteckt {
 
-            .versteckt { display: none; }
-
+                display: none;
+            }
         </style>
         <script src="router.js"></script> <!-- Router-Klasse laden -->
 
@@ -21,7 +22,7 @@
                     document.querySelectorAll("div").forEach(mainElement => {
 
                         mainElement.classList.add("versteckt");
-                    })
+                    });
 
                     let element = document.querySelector(`#${id}`);
                     if (element) {
