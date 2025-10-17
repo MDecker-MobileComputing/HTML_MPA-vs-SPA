@@ -6,28 +6,25 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="../style.css">
         <style>
-            .versteckt {
-
-                display: none;
-            }
+            .versteckt { display: none; }
         </style>
         <script src="router.js"></script> <!-- Router-Klasse laden -->
 
         <script><!-- SPA-Router initialisieren -->
 
-            window.addEventListener("load", () => {
+            window.addEventListener( "load", () => {
 
-                const seiteTauschen = (id, titel) => {
+                const seiteTauschen = ( id, titel ) => {
 
-                    document.querySelectorAll("div").forEach(mainElement => {
+                    document.querySelectorAll( "div" ).forEach( mainElement => {
 
-                        mainElement.classList.add("versteckt");
+                        mainElement.classList.add( "versteckt" );
                     });
 
-                    let element = document.querySelector(`#${id}`);
-                    if (element) {
+                    let element = document.querySelector( `#${id}` );
+                    if ( element ) {
 
-                        element.classList.remove("versteckt");
+                        element.classList.remove( "versteckt" );
                     }
 
                     document.title = titel;
@@ -36,20 +33,20 @@
                 let routes = [
                     {
                         url: "^/$",
-                        show: () => seiteTauschen("seite-haupt", "SPA: Hauptseite")
+                        show: () => seiteTauschen( "seite-haupt", "SPA: Hauptseite" )
                     },{
                         url: "^/seite2/$",
-                        show: () => seiteTauschen("seite-2", "SPA: Seite 2")
+                        show: () => seiteTauschen( "seite-2", "SPA: Seite 2" )
                     },{
                         url: "^/seite3/$",
-                        show: () => seiteTauschen("seite-3", "SPA: Seite 3")
+                        show: () => seiteTauschen( "seite-3", "SPA: Seite 3" )
                     },{
                         url: ".*",
-                        show: () => seiteTauschen("seite-nicht-gefunden", "SPA: Seite nicht gefunden")
+                        show: () => seiteTauschen( "seite-nicht-gefunden", "SPA: Seite nicht gefunden" )
                     }
                 ];
 
-                const router = new Router(routes);
+                const router = new Router ( routes );
                 router.start();
             });
         </script>
