@@ -8,48 +8,8 @@
         <style>
             .versteckt { display: none; }
         </style>
-        <script src="router.js"></script> <!-- Router-Klasse laden -->
-
-        <script><!-- SPA-Router initialisieren -->
-
-            window.addEventListener( "load", () => {
-
-                const seiteTauschen = ( id, titel ) => {
-
-                    document.querySelectorAll( "div" ).forEach( mainElement => {
-
-                        mainElement.classList.add( "versteckt" );
-                    });
-
-                    let element = document.querySelector( `#${id}` );
-                    if ( element ) {
-
-                        element.classList.remove( "versteckt" );
-                    }
-
-                    document.title = titel;
-                };
-
-                let routes = [
-                    {
-                        url: "^/$",
-                        show: () => seiteTauschen( "seite-haupt", "SPA: Hauptseite" )
-                    },{
-                        url: "^/seite2/$",
-                        show: () => seiteTauschen( "seite-2", "SPA: Seite 2" )
-                    },{
-                        url: "^/seite3/$",
-                        show: () => seiteTauschen( "seite-3", "SPA: Seite 3" )
-                    },{
-                        url: ".*",
-                        show: () => seiteTauschen( "seite-nicht-gefunden", "SPA: Seite nicht gefunden" )
-                    }
-                ];
-
-                const router = new Router ( routes );
-                router.start();
-            });
-        </script>
+        <script src="router.js" defer></script> <!-- Router-Klasse laden -->
+        <script src="index.js" defer></script> <!-- SPA-Router initialisieren -->
     </head>
     <body>
 
