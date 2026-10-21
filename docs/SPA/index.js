@@ -3,7 +3,7 @@
 
 window.addEventListener( "load", ( ) => {
 
-    const switchPage = ( id, titel ) => {
+    const switchPage = ( id, title ) => {
 
         document.querySelectorAll( "div" ).forEach( mainElement => {
 
@@ -16,7 +16,7 @@ window.addEventListener( "load", ( ) => {
             element.classList.remove( "hidden" );
         }
 
-        document.title = titel;
+        document.title = title;
     };
 
     const routes = [
