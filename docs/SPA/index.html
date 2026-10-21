@@ -1,60 +1,59 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
     <head>
         <meta charset="utf-8" >
         <title>MPA vs SPA</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" type="text/css" href="../style.css">
-        <style>
-            .versteckt { display: none; }
-        </style>
-        <script src="router.js" defer></script> <!-- Router-Klasse laden -->
-        <script src="index.js" defer></script> <!-- SPA-Router initialisieren -->
+        <link rel="stylesheet" type="text/css" href="spa-style.css">
+        <script src="router.js" defer></script> <!-- load router class -->
+        <script src="index.js"  defer></script> <!-- configure router  -->
     </head>
     <body>
 
-        <div id="seite-haupt" class="versteckt">
+        <div id="page-main" class="hidden">
 
-            <h1>Hauptseite</h1>
+            <h1>Main Page</h1>
 
-            <p>Dies ist die Hauptseite der Website.</p>
+            <p>This is the main page of the website.</p>
 
             <br>
 
-            <a href="#/seite2/">Seite 2</a>
-            <a href="#/seite3/">Seite 3</a>
-            <a href="#/nichtda/">Link zu nicht vorhandener Seite</a>
+            <a href="#/page2/"   >Page 2</a>
+            <a href="#/page3/"   >Page 3</a>
+            <a href="#/notThere/">Link to non-existent page</a>
 
         </div>
 
 
-        <div id="seite-2" class="versteckt">
 
-            <h1>Seite 2</h1>
+        <div id="page-2" class="hidden">
 
-            <p>Diese ist die zweite Seite der Website.</p>
+            <h1>Page 2</h1>
 
-            <a href="#/">Zurück zur Hauptseite</a>
+            <p>This is the second page of the website.</p>
 
-        </div>
-
-
-        <div id="seite-3" class="versteckt">
-
-            <h1>Seite 3</h1>
-
-            <p>Diese ist die dritte Seite der Website.</p>
-
-            <a href="#/">Zurück zur Hauptseite</a>
+            <a href="#/">Back to the main page</a>
 
         </div>
 
 
-        <div id="seite-nicht-gefunden" class="versteckt">
+        <div id="page-3" class="hidden">
 
-            <h1>FEHLER: Seite nicht gefunden</h1>
+            <h1>Page 3</h1>
 
-            <a href="#/">Zurück zur Hauptseite</a>
+            <p>This is the third page of the website.</p>
+
+            <a href="#/">Back to the main page</a>
+
+        </div>
+
+
+        <div id="page-not-found" class="hidden">
+
+            <h1>ERROR: Page not found</h1>
+
+            <a href="#/">Back to the main page</a>
 
         </div>
 

@@ -1,0 +1,7 @@
+
+/**
+ * This class is used to hide pages that are not currently active in a Single Page Application (SPA).
+ */
+.hidden {
+    display: none;
+}

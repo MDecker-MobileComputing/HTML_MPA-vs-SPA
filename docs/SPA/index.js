@@ -1,14 +1,19 @@
 "use strict";
 
-window.addEventListener("load", () => {
-    const seiteTauschen = (id, titel) => {
-        document.querySelectorAll("div").forEach(mainElement => {
-            mainElement.classList.add("versteckt");
+
+window.addEventListener( "load", ( ) => {
+
+    const switchPage = ( id, titel ) => {
+
+        document.querySelectorAll( "div" ).forEach( mainElement => {
+
+            mainElement.classList.add( "hidden" );
         });
 
-        const element = document.querySelector(`#${id}`);
-        if (element) {
-            element.classList.remove("versteckt");
+        const element = document.querySelector( `#${id}` );
+        if ( element ) {
+
+            element.classList.remove( "hidden" );
         }
 
         document.title = titel;
@@ -17,19 +22,19 @@ window.addEventListener("load", () => {
     const routes = [
         {
             url: "^/$",
-            show: () => seiteTauschen("seite-haupt", "SPA: Hauptseite")
+            show: ( ) => switchPage( "page-main", "SPA: Main Page" )
         }, {
-            url: "^/seite2/$",
-            show: () => seiteTauschen("seite-2", "SPA: Seite 2")
+            url: "^/page2/$",
+            show: ( ) => switchPage( "page-2", "SPA: Page 2" )
         }, {
-            url: "^/seite3/$",
-            show: () => seiteTauschen("seite-3", "SPA: Seite 3")
+            url: "^/page3/$",
+            show: ( ) => switchPage( "page-3", "SPA: Page 3" )
         }, {
             url: ".*",
-            show: () => seiteTauschen("seite-nicht-gefunden", "SPA: Seite nicht gefunden")
+            show: ( ) => switchPage( "page-not-found", "SPA: Page not found" )
         }
     ];
 
-    const router = new Router(routes);
-    router.start();
+    const router = new Router( routes );
+    router.start( );
 });
