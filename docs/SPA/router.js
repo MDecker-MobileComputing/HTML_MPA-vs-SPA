@@ -1,113 +1,113 @@
 "use strict";
 
-// Quelle dieser Datei:
-// https://github.com/DennisSchulmeister/dhbwka-wwi-webprog-quellcodes/blob/5accf90fb94319568a85d764fe94327a4bec599c/3%20JavaScript/Aufgaben/SPA-Router/Aufgabe/router.js
-// Shortlink: https://bit.ly/simple-spa-router
+/*
+ * Source of this page
+ * https://github.com/DennisSchulmeister/dhbwka-wwi-webprog-quellcodes/blob/5accf90fb94319568a85d764fe94327a4bec599c/3%20JavaScript/Aufgaben/SPA-Router/Aufgabe/router.js
+ * Shortlink: https://bit.ly/simple-spa-router
+ * Comments were translated from German to English using AI.
+ * The original comments can be found in the source code above.
+ */
 
 /**
- * Diese Klasse stellt einen so genannten Single Page Router dar. Sie überwacht
- * die momentan aktive URL (die sich durch Anklicken eines Links oder durch
- * Setzen von window.location.href in JavaScript jederzeit ändern kann) und
- * sorgt dafür, dass der für die jeweilige URL richtige Inhalt angezeigt wird.
+ * This class implements a so-called single-page router. It monitors the
+ * currently active URL (which can change whenever a link is clicked or
+ * window.location.href is set in JavaScript) and ensures that the content
+ * corresponding to that URL is displayed.
  *
- * Hierzu muss der Klasse bei ihrer Instantiierung eine Liste mit Routen
- * mitgegeben werden, die jeweils einen regulären Ausdrück zur Prüfung der
- * URL sowie eine Funktion zur Anzeige des dazugehörigen Inhalts besitzen.
+ * When instantiated, the class must be given a list of routes. Each route
+ * contains a regular expression for matching the URL and a function for
+ * displaying the corresponding content.
  */
 class Router {
 
     /**
-     * Konstruktor. Im Parameter "routes" muss eine Liste mit den vorhandenen
-     * URL-Routen der App übergeben werden. Die Liste muss folgendes Format
-     * haben:
+     * Constructor. The "routes" parameter must contain a list of the app's
+     * URL routes in the following format:
      *
      *      [
      *          {
-     *              url: "^/$"              // Regulärer Ausdruck zur URL
-     *              show: matches => {...}  // Funktion zur Anzeige des Inhalts
+     *              url: "^/$"              // Regular expression for the URL
+     *              show: matches => {...}  // Function to display the content
      *          }, {
-     *              url: "^/Details/(.*)$"  // Regulärer Ausdruck zur URL
-     *              show: matches => {...}  // Funktion zur Anzeige des Inhalts
+     *              url: "^/Details/(.*)$"  // Regular expression for the URL
+     *              show: matches => {...}  // Function to display the content
      *          },
      *          ...
      *      ]
      *
-     * @param {List} routes Definition der in der App verfügbaren Seiten
+     * @param {List} routes List of pages available in the app
      */
-    constructor(routes) {
+    constructor( routes ) {
 
         this._routes = routes;
         this._started = false;
 
-        window.addEventListener("hashchange", () => this._handleRouting());
+        window.addEventListener( "hashchange", ( ) => this._handleRouting( ) );
     }
 
 
     /**
-     * Routing starten und erste Route direkt aufrufen.
+     * Start routing and immediately activate the initial route.
      */
-    start() {
+    start( ) {
 
         this._started = true;
-        this._handleRouting();
+        this._handleRouting( );
     }
 
 
     /**
-     * Routing stoppen, so dass der Router nicht mehr aktiv wird, wenn Link
-     * angeklickt wird oder sich die URL der Seite sonst irgendwie ändert.
+     * Stop routing so the router no longer responds when a link is clicked
+     * or the page URL changes in any other way.
      */
-    stop() {
+    stop( ) {
 
         this._started = false;
     }
 
 
     /**
-     * Diese Methode wertet die aktuelle URL aus und sorgt dafür, dass der
-     * dazu passende Inhalt angezeigt wird. Der Einfachheit halber wird eine
-     * so genannte Hash-URL verwendet, bei der die aufzurufende Seite nach
-     * einem #-Zeichen stehen muss. Zum Beispiel:
+     * This method evaluates the current URL and displays the corresponding
+     * content. For simplicity, it uses a so-called hash URL, where the page
+     * to be displayed must follow a # character. For example:
      *
      *   http://localhost:8080/index.html#/Detail/1234
      *
-     * Hier beschreibt "/Detail/1234" den Teil der URL mit der darzustellenden
-     * Seite. Der Vorteil dieser Technik besteht darin, dass ein Link mit einer
-     * solchen URL keine neue Seite vom Server lädt, wenn sich der vordere Teil
-     * der URL (alles vor dem #-Zeichen) nicht verändert. Stattdessen wird
-     * ein "hashchange"-Ereignis geworfen, auf das hier reagiert werden kann.
+     * Here, "/Detail/1234" is the part of the URL that identifies the page to
+     * display. The advantage of this technique is that a link with such a URL
+     * does not load a new page from the server as long as the part of the URL
+     * before the # character remains unchanged. Instead, a "hashchange" event
+     * is fired, which the router can respond to.
      *
-     * Auf Basis der History-API und dem "popstate"-Ereignis lässt sich ein
-     * noch ausgefeilterer Single Page Router entwickeln, der bei Bedarf auch
-     * ohne das #-Zeichen in der URL auskommt. Dies würde jedoch sowohl mehr
-     * Quellcode sowie eine spezielle Server-Konfiguration erfordern, um
-     * wirklich stabil zu laufen. Denn der Single Page Router kann nur aktiv
-     * werden, wenn die Seite schon geladen wurde, so dass insbesondere der
-     * erste Aufruf, wenn ein so genannter "Deep Link", der nicht auf die
-     * Startseite der Anwendung zeigt, aufgerufen wird, zu einem "404 Not Found"
-     * Fehler führen kann. Der Server müsste in diesem Fall so konfiguriert
-     * werden, dass er trotzdem die Startseite zurückliefert, auch wenn diese
-     * nicht direkt angesprochen wurde. Diesen Aufwand sparen wir uns hier. :-)
+     * The History API and the "popstate" event can be used to build a more
+     * sophisticated single-page router that can work without the # character
+     * in the URL. However, this requires more code and special server
+     * configuration to work reliably. The router can only run after the page
+     * has loaded, so opening a so-called "deep link" directly—one that does not
+     * point to the application's home page—may result in a "404 Not Found"
+     * error. In that case, the server must be configured to return the home
+     * page even when it was not requested directly. We avoid that extra
+     * complexity here. :-)
      */
-    _handleRouting() {
+    _handleRouting( ) {
 
-        let url = location.hash.slice(1);
+        let url = location.hash.slice( 1 );
 
-        if (url.length === 0) {
+        if ( url.length === 0 ) {
 
             url = "/";
         }
 
         let matches = null;
-        let route = this._routes.find(p => matches = url.match(p.url));
+        let route = this._routes.find( p => matches = url.match( p.url ) );
 
-        if (!route) {
+        if ( !route ) {
 
-            console.error(`Keine Route zur URL ${url} gefunden!`);
+            console.error( `No route found for URL ${url}!` );
             return;
         }
 
-        route.show(matches);
+        route.show( matches );
     }
 
 }
